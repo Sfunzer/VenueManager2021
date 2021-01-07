@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="VenueManager">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/VenueManager.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -20,8 +20,8 @@ public class User {             // Declaration of the fields used in this class.
                                 overview. (for now only the username). */
 @Override
     public String toString(){
-    String userDataOverview = "\n-----------\n";
-    userDataOverview += "\nName: " + userName;
+    String userDataOverview = "Name: " + userName;
+    userDataOverview += "\n-----------\n";
     return userDataOverview;
     }
 }
