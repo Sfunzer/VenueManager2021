@@ -1,4 +1,3 @@
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class ReservationStore {          //Declaration of the fields which will contain all reservation objects.
@@ -12,9 +11,6 @@ public class ReservationStore {          //Declaration of the fields which will 
                                         (because double reservation is true) and there's no object created. */
     public Boolean addReservation(Reservation newReservation) {
         boolean dateAlreadyBooked = false;
-
-        //LocalDateTime startParse = LocalDateTime.parse(newReservation.reservationStart);
-        //LocalDateTime stopParse = LocalDateTime.parse(newReservation.reservationStop);
 
         for (Reservation show : reservationList) {
             if (show.getReservationStart().toLocalDate().equals(newReservation.getReservationStart().toLocalDate())) {

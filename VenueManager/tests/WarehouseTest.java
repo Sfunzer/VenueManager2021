@@ -9,7 +9,7 @@ class WarehouseTest {
     @Test
     void getInventory() {
         Warehouse testHouse = new Warehouse();
-        Equipment testEquipment = new Equipment("Heritage", 10, 20, 20000, "a purple hero!");
+        Equipment testEquipment = new MovableEquipment("Heritage", 10, 20, 20000, "a purple hero!");
         testHouse.addEquipment(testEquipment);
 
         ArrayList<Equipment> getTest = testHouse.getInventory();
@@ -21,7 +21,7 @@ class WarehouseTest {
     @Test
     void searchInventory() {
         Warehouse testHouse = new Warehouse();
-        Equipment testEquipment = new Equipment("Heritage", 10, 20, 20000, "a purple hero!");
+        Equipment testEquipment = new MovableEquipment("Heritage", 10, 20, 20000, "a purple hero!");
         testHouse.addEquipment(testEquipment);
         }
 
@@ -29,7 +29,7 @@ class WarehouseTest {
     @Test
     void deleteEquipment() {
         Warehouse testHouse = new Warehouse();
-        Equipment testEquipment = new Equipment("Heritage", 10, 20, 20000, "a purple hero!");
+        Equipment testEquipment = new MovableEquipment("Heritage", 10, 20, 20000, "a purple hero!");
         testHouse.addEquipment(testEquipment);
 
         assertFalse(testHouse.deleteEquipment(12));

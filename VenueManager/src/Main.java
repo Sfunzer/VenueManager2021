@@ -40,18 +40,20 @@ public class Main {
             System.out.println("User is successfully created");
         }
 
+
+
         // Let's continue with filling up the the warehouse with some equipment:
-        Equipment ssl200 = new Equipment("SSL L200", 1, 4, 0, "36 faders");
+        Equipment ssl200 = new MovableEquipment("SSL L200", 1, 4, 0, "36 faders");
         mainWareHouse.addEquipment(ssl200);
-        Equipment ssl100 = new Equipment("SSL L100", 2, 25, 0, "Svens Favorite");
+        Equipment ssl100 = new MovableEquipment("SSL L100", 2, 25, 0, "Svens Favorite");
         mainWareHouse.addEquipment(ssl100);
-        Equipment avioUSB = new Equipment("Dante Avio USB", 3, 350, 95, "needs PoE");
+        Equipment avioUSB = new MovableEquipment("Dante Avio USB", 3, 350, 95, "needs PoE");
         mainWareHouse.addEquipment(avioUSB);
-        Equipment sb3224 = new Equipment("SSL SB32.24", 4, 9, 250000, "without LK37 System");
+        Equipment sb3224 = new MovableEquipment("SSL SB32.24", 4, 9, 250000, "without LK37 System");
         mainWareHouse.addEquipment(sb3224);
-        Equipment sm58 = new Equipment("Shure SM58", 5, 10, 120, "You can use this microphone also as a hammer");
+        Equipment sm58 = new MovableEquipment("Shure SM58", 5, 10, 120, "You can use this microphone also as a hammer");
         mainWareHouse.addEquipment(sm58);
-        Equipment oc818 = new Equipment("Austrian Audio OC818", 6, 2, 1750, "A mighty microphone. Great for surround recordings!");
+        Equipment oc818 = new MovableEquipment("Austrian Audio OC818", 6, 2, 1750, "A mighty microphone. Great for surround recordings!");
         mainWareHouse.addEquipment(oc818);
 
         //let's see what we created so far. We'll start with the user list, and then follow with the Warehouse inventory:
@@ -76,16 +78,18 @@ public class Main {
 
 
 
-        Reservation elbow = new Reservation ("Elbow", "Jodrel Banks", "Needs Digico and D&B PA", activeUser, "2016-03-10T21:00:00", "2016-03-10T23:15:00");
-        Reservation queen = new Reservation("Queen", "Wembley Stadium", "Needs Midas H3000 and StageCo Stack", activeUser, "1980-03-10T21:00:00", "2080-03-10T23:15:00");
-        Reservation chrisRea = new Reservation("Chris Rea", "The road home", "Needs red lights all around", activeUser, "2020-12-24T18:00:00", "2020-12-26T23:59:59");
+        EventReservation elbow = new EventReservation ("Elbow", "Jodrel Banks", "Needs Digico and D&B PA", activeUser, "2016-03-10T21:00:00", "2016-03-10T23:15:00");
+        EventReservation queen = new EventReservation("Queen", "Wembley Stadium", "Needs Midas H3000 and StageCo Stack", activeUser, "1980-03-10T21:00:00", "2080-03-10T23:15:00");
+        EventReservation chrisRea = new EventReservation("Chris Rea", "The road home", "Needs red lights all around", activeUser, "2020-12-24T18:00:00", "2020-12-26T23:59:59");
 
 
 
 
         doubleReservation = mainReservations.addReservation(elbow);
+        //ReservationInserter(doubleReservation);
+
         //If/else point to check if the reservation checks the requirements. And yes, for now we have some duplicate code in here. this will be fixed as well.
-        if (doubleReservation) {
+         if (doubleReservation) {
             System.out.println("Date/Time is already booked. Reservation is not made.");
         } else {
             System.out.println("Reservation Made");
@@ -194,6 +198,15 @@ public class Main {
          */
 
     }
+/*
+    public static void ReservationInserter(boolean doubleReservationCheck){
+        if (doubleReservationCheck) {
+            System.out.println("Date/Time is already booked. Reservation is not made.");
+        } else {
+            System.out.println("Reservation Made");
+        }
+    }
+*/
 }
 
 /* To-do:
