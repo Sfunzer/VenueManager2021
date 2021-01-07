@@ -15,7 +15,7 @@ public class Main {
     static boolean deleteSuccessful;
 
     static String activeUser;
-    static String warehouseSearchKey;
+    //static String warehouseSearchKey;
 
 
     public static void main(String[] args) {
@@ -31,7 +31,6 @@ public class Main {
         // let's start with adding a user:
 
         newUser = new User("Sven de Hoog", "cherrycoke1");
-        //mainUsers.addUser("Sven de Hoog", "cherrycoke1", "cherrycoke1");
 
         userAddSuccessful = mainUsers.addUser(newUser, "cherrycoke1");
         if (!userAddSuccessful) {                //checking if user creation met all requirements.
@@ -84,44 +83,19 @@ public class Main {
 
 
 
-
+        //If/else point through a local method to check if the reservation checks the requirements.
         doubleReservation = mainReservations.addReservation(elbow);
-        //ReservationInserter(doubleReservation);
-
-        //If/else point to check if the reservation checks the requirements. And yes, for now we have some duplicate code in here. this will be fixed as well.
-         if (doubleReservation) {
-            System.out.println("Date/Time is already booked. Reservation is not made.");
-        } else {
-            System.out.println("Reservation Made");
-        }
-
-
+        ReservationInserter(doubleReservation);
         doubleReservation = mainReservations.addReservation(queen);
-        if (doubleReservation) {
-            System.out.println("Date/Time is already booked. Reservation is not made.");
-        } else {
-            System.out.println("Reservation Made");
-        }
+        ReservationInserter(doubleReservation);
         doubleReservation = mainReservations.addReservation(chrisRea);
-        if (doubleReservation) {
-            System.out.println("Date/Time is already booked. Reservation is not made.");
-        } else {
-            System.out.println("Reservation Made");
-        }
+        ReservationInserter(doubleReservation);
 
         //These are two of the same reservations as above to show the checking system.
         doubleReservation = mainReservations.addReservation(queen);
-        if (doubleReservation) {
-            System.out.println("Date/Time is already booked. Reservation is not made.");
-        } else {
-            System.out.println("Reservation Made");
-        }
+        ReservationInserter(doubleReservation);
         doubleReservation = mainReservations.addReservation(chrisRea);
-        if (doubleReservation) {
-            System.out.println("Date/Time is already booked. Reservation is not made.");
-        } else {
-            System.out.println("Reservation Made");
-        }
+        ReservationInserter(doubleReservation);
 
         System.out.println("\nReservation list:\n");                                  //Let's see the reservation list:
         for (Object reservationList : mainReservations.getReservationList()) {       //Printing the reservation list.
@@ -138,25 +112,8 @@ public class Main {
          good look at their functionality. Let's start with searching:
          */
 
-        warehouseSearchKey = "SSL";
-        System.out.println("\nSearch results after a search for " + warehouseSearchKey + ":\n");            //Let's try SSL, which is in our warehouse.
-        if (mainWareHouse.searchInventory(warehouseSearchKey).size() == 0) {
-            System.out.println("found nothing\n");
-        } else {
-            for (Object searchResults : mainWareHouse.searchInventory(warehouseSearchKey)) {
-                System.out.println(searchResults.toString());
-            }
-        }
-
-        warehouseSearchKey = "Yamaha";
-        System.out.println("\nSearch results after a search for " + warehouseSearchKey + ":\n");            //Now let's try Yamaha, which isn't in our warehouse.
-        if (mainWareHouse.searchInventory(warehouseSearchKey).size() == 0) {
-            System.out.println("found nothing\n");
-        } else {
-            for (Object searchResults : mainWareHouse.searchInventory(warehouseSearchKey)) {
-                System.out.println(searchResults.toString());
-            }
-        }
+        ClippySearch("SSL"); //Let's try SSL, which is in our warehouse.
+        ClippySearch("Yamaha"); //Now let's try Yamaha, which isn't in our warehouse.
 
         /* As you can see, the search method works, and also has a simple way of managing no results. Again, I know this is using duplicate code.
         This will be taken care of in a next iteration. Let's continue to the delete method:
@@ -179,26 +136,16 @@ public class Main {
         }
 
         // And let's search for the SSL L100 as well:
-
-        warehouseSearchKey = "SSL L100";
-        System.out.println("\nSearch results after a search for " + warehouseSearchKey + ":\n");
-        if (mainWareHouse.searchInventory(warehouseSearchKey).size() == 0) {
-            System.out.println("found nothing\n");
-        } else {
-            for (Object searchResults : mainWareHouse.searchInventory(warehouseSearchKey)) {
-                System.out.println(searchResults.toString());
-            }
-        }
+        ClippySearch("L100");
 
         /* So that's everything so far. as mentioned earlier the application isn't finished, so stay tuned for more! So what can we expect in the future?
-            - no duplicate code in the main class.
             - Use of the equipment object in a reservation.
             - An upgraded double reservation check system.
             - Probably a few more things i can't think of at this moment.
          */
 
     }
-/*
+    //Local method to check for a double reservation.
     public static void ReservationInserter(boolean doubleReservationCheck){
         if (doubleReservationCheck) {
             System.out.println("Date/Time is already booked. Reservation is not made.");
@@ -206,9 +153,22 @@ public class Main {
             System.out.println("Reservation Made");
         }
     }
-*/
+    //Local method to invoke a search query and display the results.
+    public static void ClippySearch(String searchKey) {
+        System.out.println("\nSearch results after a search for " + searchKey + ":\n");
+        if (mainWareHouse.searchInventory(searchKey).size() == 0) {
+            System.out.println("found nothing\n");
+        } else {
+            for (Object searchResults : mainWareHouse.searchInventory(searchKey)) {
+                System.out.println(searchResults.toString());
+            }
+        }
+
+
+    }
+
 }
 
 /* To-do:
-TODO: Turn duplicate code into methods in here, or in classes is possible. 26-12: or possible acces layer?
+TODO:Build an access layer
  */
